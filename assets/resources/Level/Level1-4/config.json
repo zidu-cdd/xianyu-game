@@ -1,0 +1,38 @@
+{
+    "levelId": 4,
+    "levelName": "消迹藏物",
+    "star": 5,
+    "bgPath": "BgNormal",
+    "targets": [
+        {
+            "id": "headphones",
+            "spritePath": "Headphones",
+            "iconPath": "HeadphonesIcon",
+            "pos": { "x": -392, "y": -304 }
+        },
+        {
+            "id": "sunscreen",
+            "spritePath": "OpendBag",
+            "iconPath": "SunscreenIcon",
+            "pos": { "x": -176, "y": -720 }
+        },
+        {
+            "id": "hikingPoles",
+            "spritePath": "HikingPoles",
+            "iconPath": "HikingPolesIcon",
+            "pos": { "x": -564, "y": -677 }
+        },
+        {
+            "id": "watch",
+            "spritePath": "Watch",
+            "iconPath": "WatchIcon",
+            "pos": { "x": 105, "y": -387 }
+        },
+        {
+            "id": "dataCable", 
+            "spritePath": "DataCable",
+            "iconPath": "DataCableIcon",
+            "pos": { "x": 500, "y": -609 }
+        }
+    ]
+}

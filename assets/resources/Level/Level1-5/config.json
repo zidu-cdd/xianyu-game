@@ -1,0 +1,39 @@
+{
+    "levelId": 5,
+    "levelName": "",
+    "star": 4,
+    "bgPath": "BgNormal",
+    "targets": [
+        {
+            "id": "page",
+            "spritePath": "FragmentaryPage",
+            "iconPath": "FragmentaryPageIcon",
+            "pos": { "x": -547, "y": 393 }
+        },
+        {
+            "id": "fell", 
+            "spritePath": "Fell",
+            "iconPath": "FellIcon",
+            "pos": { "x": 456, "y": -341 }
+        },
+        {
+            "id": "key",
+            "spritePath": "Key",
+            "iconPath": "KeyIcon",
+            "pos": { "x": -243, "y": 498 }
+        },
+        {
+            "id": "copperCoin",
+            "spritePath": "CopperCoin",
+            "iconPath": "CopperCoinIcon",
+            "pos": { "x": -116, "y": 453 },
+            "hidden": true
+        },
+        {
+            "id": "brokenPot",
+            "spritePath": "",
+            "pos": { "x": -116, "y": 453 },
+            "isTarget": false
+        }
+    ]
+}

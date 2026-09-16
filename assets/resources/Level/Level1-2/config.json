@@ -1,0 +1,32 @@
+{
+    "levelId": 2,
+    "levelName": "山野寻食",
+    "star": 4,
+    "bgPath": "BgNormal",
+    "targets": [
+        {
+            "id": "mashroom", 
+            "spritePath": "Mushroom",
+            "iconPath": "MushroomIcon",
+            "pos": { "x": -103, "y": -736 }
+        },
+        {
+            "id": "river",
+            "spritePath": "River",
+            "iconPath": "RiverIcon",
+            "pos": { "x": -326, "y": 253 }
+        },
+        {
+            "id": "wildHerbs",
+            "spritePath": "WildHerbs",
+            "iconPath": "WildHerbsIcon",
+            "pos": { "x": 348, "y": -551 }
+        },
+        {
+            "id": "wildHerbs",
+            "spritePath": "WildFruit",
+            "iconPath": "WildFruitIcon",
+            "pos": { "x": 348, "y": -551 }
+        }
+    ]
+}

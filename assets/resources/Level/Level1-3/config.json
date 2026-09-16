@@ -1,0 +1,38 @@
+{
+    "levelId": 3,
+    "levelName": "拾薪过夜",
+    "star": 4,
+    "bgPath": "BgNormal",
+    "targets": [
+        {
+            "id": "flint",
+            "spritePath": "Flint",
+            "iconPath": "FlintIcon",
+            "pos": { "x": -179, "y": -820 }
+        },
+        {
+            "id": "firewoot",
+            "spritePath": "Firewoot",
+            "iconPath": "FirewootIcon",
+            "pos": { "x": 317, "y": 352 }
+        },
+        {
+            "id": "firewall", 
+            "spritePath": "Firewall",
+            "iconPath": "FirewallIcon",
+            "pos": { "x": 428, "y": -691 }
+        },
+        {
+            "id": "deadLeave",
+            "spritePath": "DeadLeaves",
+            "iconPath": "DeadLeavesIcon",
+            "pos": { "x": 227, "y": -159 }
+        },
+        {
+            "id": "stone",
+            "spritePath": "Stone",
+            "pos": { "x": 402, "y": -693 },
+            "isTarget": false
+        }
+    ]
+}

@@ -1,0 +1,32 @@
+{
+    "levelId": 1,
+    "levelName": "凡尘匿迹",
+    "star": 4,
+    "bgPath": "BgNormal",
+    "targets": [ 
+        {
+            "id": "shoe",
+            "spritePath": "Shoes",
+            "iconPath": "ShoesIcon",
+            "pos": { "x": 303, "y": 181 }
+        },
+        {
+            "id": "hat",
+            "spritePath": "Hat",
+            "iconPath": "HatIcon",
+            "pos": { "x": 377, "y": -820 }
+        },
+        {
+            "id": "bag",
+            "spritePath": "Bag",
+            "iconPath": "BagIcon",
+            "pos": { "x": -234, "y": -343 }
+        },
+        {
+            "id": "shirt",
+            "spritePath": "Clothes",
+            "iconPath": "ClothesIcon",
+            "pos": { "x": -449, "y": 716 }
+        }
+    ]
+}
