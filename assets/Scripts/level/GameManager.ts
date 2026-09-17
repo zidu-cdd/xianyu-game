@@ -10,6 +10,7 @@ import { LevelPassDataManager, LevelPassData } from '../levelSelect/LevelPassDat
 import { PopupType } from './Popup/PopupTypes';
 import { MenuType } from '../settings/MenuData';
 import { MenuPanel } from '../settings/MenuPanel';
+import { ITEM_CONFIGS, ITEM_STORAGE_KEY, ItemConfig } from '../Profile/ItemData';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
@@ -74,18 +75,7 @@ export class GameManager extends Component {
     private levelEnded = false;
 
     private _starPool: NodePool = new NodePool();
-    private readonly itemConfigs: Record<string, { name: string; iconPath: string; requiredCount: number; }> = {
-        Magnifier: {
-            name: '放大镜',
-            iconPath: 'Level/Props1',
-            requiredCount: 1,
-        },
-        PassCleaning: {
-            name: '通关清理',
-            iconPath: 'Level/Props1',
-            requiredCount: 1
-        }
-    };
+    private readonly itemConfigs: Record<string, ItemConfig> = ITEM_CONFIGS;
 
     private readonly inventory: Record<string, number> = {
         Magnifier: 0,
@@ -95,7 +85,7 @@ export class GameManager extends Component {
     private settingsPopupLayer: Node | null = null;
     private settingsMenuPanel: MenuPanel | null = null;
 
-    private readonly itemStorageKey = 'xianyu_global_item_counts_v1';
+    private readonly itemStorageKey = ITEM_STORAGE_KEY;
 
     start() {
         this.hideStarRating();
@@ -157,8 +147,7 @@ export class GameManager extends Component {
                     if (passData.levelName) {
                         config.levelName = passData.levelName;
                     }
-                    // 选关页的 star 只表示该关卡在列表里显示的星级/状态，
-                    // 不应该覆盖关卡内配置里真实的 star（也就是本关的槽位/目标配置）。
+                    
                     if (passData.levelId > 0) {
                         config.levelId = passData.levelId;
                     }

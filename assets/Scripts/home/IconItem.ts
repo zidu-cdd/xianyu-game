@@ -7,6 +7,7 @@ import {
     Label,
     resources,
     Node,
+    director,
     tween,
     Vec3,
 } from 'cc';
@@ -165,6 +166,12 @@ export class IconItem extends Component {
 
             this.levelLabel.node.active = false;
         }
+
+        this.node.on(
+            Node.EventType.TOUCH_END,
+            this.onClick,
+            this
+        );
     }
 
 
@@ -846,20 +853,9 @@ export class IconItem extends Component {
 
                 this.clicking = false;
 
-
-                /**
-                 * TODO：
-                 *
-                 * 后续统一处理场景跳转。
-                 *
-                 * 例如：
-                 *
-                 * if (this.data?.target) {
-                 *     SceneTransition.loadScene(
-                 *         this.data.target
-                 *     );
-                 * }
-                 */
+                if (this.data?.target) {
+                    director.loadScene(this.data.target);
+                }
 
             })
 
@@ -979,6 +975,12 @@ export class IconItem extends Component {
     // =========================================================
 
     onDestroy() {
+
+        this.node.off(
+            Node.EventType.TOUCH_END,
+            this.onClick,
+            this
+        );
 
         /**
          * 让所有正在进行的异步加载结果失效。

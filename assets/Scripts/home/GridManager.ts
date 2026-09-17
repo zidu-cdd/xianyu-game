@@ -176,13 +176,13 @@ export class GridManager extends Component {
             {
                 type: 'level',
 
-                level: 12,
+                level: 1,
 
                 name: '等级',
 
                 iconPath: 'Home/Level',
 
-                target: 'scene_level',
+                target: 'Profile',
 
                 redPoint: false
             },
@@ -212,7 +212,7 @@ export class GridManager extends Component {
 
                 iconPath: 'Home/Settings',
 
-                target: 'scene_settings',
+                target: 'Settings',
 
                 redPoint: false
             },
@@ -225,7 +225,7 @@ export class GridManager extends Component {
 
                 iconPath: 'Home/IllustrationBook',
 
-                target: 'scene_album',
+                target: 'Collection',
 
                 redPoint: false
             },
