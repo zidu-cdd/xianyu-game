@@ -11,6 +11,7 @@ import { PopupType } from './Popup/PopupTypes';
 import { MenuType } from '../settings/MenuData';
 import { MenuPanel } from '../settings/MenuPanel';
 import { ITEM_CONFIGS, ITEM_STORAGE_KEY, ItemConfig } from '../Profile/ItemData';
+import { AudioManager } from '../manager/AudioManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('GameManager')
@@ -399,6 +400,7 @@ export class GameManager extends Component {
     private onTargetFound(target: TargetItem, slotIndex: number) {
         console.log('[GameManager] 发现目标:', target.node.name, 'slotIndex:', slotIndex, '当前已找到:', this.foundCount + 1);
         this.foundCount++;
+        AudioManager.getInstance()?.playSFX('audio/sfx/target_star');
         
 
         // 找到对应的 Slot
@@ -735,10 +737,12 @@ export class GameManager extends Component {
 
         switch (id) {
             case 'music':
-
+                AudioManager.getInstance()?.toggleBGM();
+                this.settingsMenuPanel?.refreshAudioStates();
                 break;
             case 'sound':
-
+                AudioManager.getInstance()?.toggleSFX();
+                this.settingsMenuPanel?.refreshAudioStates();
                 break;
             case 'exitLevel': 
                 director.loadScene("LevelSelect");

@@ -23,10 +23,10 @@
             "pos": { "x": 348, "y": -551 }
         },
         {
-            "id": "wildHerbs",
-            "spritePath": "WildFruit",
+            "id": "WildFruit",
+            "spritePath": "Branches",
             "iconPath": "WildFruitIcon",
-            "pos": { "x": 348, "y": -551 }
+            "pos": { "x": -35, "y": 801 }
         }
     ]
 }

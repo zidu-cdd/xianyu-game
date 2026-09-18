@@ -2,6 +2,7 @@ import { _decorator, Component, Prefab, instantiate } from 'cc';
 
 import { MenuType } from './MenuData';
 import { MenuPanel } from './MenuPanel';
+import { AudioManager } from '../manager/AudioManager';
 
 const { ccclass, property } = _decorator;
 @ccclass('InitPopup')
@@ -9,6 +10,7 @@ export class InitPopup extends Component {
 
     @property(Prefab)
     private popupLayerPrefab: Prefab = null;
+    private menuPanel: MenuPanel | null = null;
 
     onLoad() {
         if (!this.popupLayerPrefab) {
@@ -28,6 +30,8 @@ export class InitPopup extends Component {
             return;
         }
 
+        this.menuPanel = menuPanel;
+
         // 设置点击回调
         menuPanel.onItemClick = (id) => this._onMenuClick(id);
 
@@ -39,8 +43,14 @@ export class InitPopup extends Component {
     private _onMenuClick(id: string) {
         console.log('主界面点击：', id);
         switch (id) {
-            case 'music':   /* 打开音乐设置 */ break;
-            case 'sound':   /* 打开音效设置 */ break;
+            case 'music':
+                AudioManager.getInstance()?.toggleBGM();
+                this.menuPanel?.refreshAudioStates();
+                break;
+            case 'sound':
+                AudioManager.getInstance()?.toggleSFX();
+                this.menuPanel?.refreshAudioStates();
+                break;
             case 'ad':      /* 打开免广告 */   break;
             case 'service': /* 打开客服 */     break;
             case 'sign':    /* 打开签到 */     break;

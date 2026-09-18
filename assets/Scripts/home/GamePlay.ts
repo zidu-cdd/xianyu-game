@@ -10,6 +10,7 @@ import {
 } from 'cc';
 
 import { GamePlaytem, GamePlayData } from './GamePlayItem';
+import { AudioManager } from '../manager/AudioManager';
 
 const { ccclass, property } = _decorator;
 
@@ -34,6 +35,10 @@ export class GamePlay extends Component {
      * 所有玩法
      */
     private itemList: GamePlaytem[] = [];
+
+    onLoad() {
+        AudioManager.getInstance();
+    }
 
     start() {
 

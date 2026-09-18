@@ -30,8 +30,8 @@
             "hidden": true
         },
         {
-            "id": "brokenPot",
-            "spritePath": "",
+            "id": "pot",
+            "spritePath": "Pot",
             "pos": { "x": -116, "y": 453 },
             "isTarget": false
         }

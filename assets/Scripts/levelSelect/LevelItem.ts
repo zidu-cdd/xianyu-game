@@ -13,6 +13,7 @@ import {
 } from 'cc';
 
 import { LevelPassDataManager } from './LevelPassData';
+import { AudioManager } from '../manager/AudioManager';
 const { ccclass, property } = _decorator;
 
 /**
@@ -294,6 +295,8 @@ export class LevelItem extends Component {
         console.log(
             `[LevelItem] 进入关卡：${this.data.name}`
         );
+
+        AudioManager.getInstance()?.playSFX('audio/sfx/level_click');
 
         console.log(
             `[LevelItem] target：${this.data.target}`

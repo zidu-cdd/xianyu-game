@@ -1,8 +1,9 @@
 import {
     _decorator, Component, Node, Layout,
-    Sprite, SpriteFrame, tween, Vec3, NodePool, UITransform
+    Sprite, SpriteFrame, tween, Vec3, NodePool, UITransform, director, EventTouch
 } from 'cc';
 import { MenuItemData, MenuType, MENU_ORDER } from './MenuData';
+import { AudioManager } from '../manager/AudioManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('MenuPanel')
@@ -35,6 +36,10 @@ export class MenuPanel extends Component {
     private _itemPool: NodePool = new NodePool();
     private _itemHandlers: Map<Node, () => void> = new Map();
 
+    protected onLoad() {
+        this.arrow?.on(Node.EventType.TOUCH_END, this.onArrowClick, this);
+    }
+
     /**
      * 外部唯一入口：传场景类型，内部决定显示什么
      */
@@ -44,8 +49,7 @@ export class MenuPanel extends Component {
         }
         const items = this._buildItems(type);
         this._render(items);
-
-        // 
+        this.refreshAudioStates();
     }
 
     /**
@@ -151,6 +155,7 @@ export class MenuPanel extends Component {
         if (sprite && data.iconMain) {
             sprite.spriteFrame = data.iconMain;
             sprite.sizeMode = Sprite.SizeMode.CUSTOM;
+            this.updateAudioState(data.id, sprite);
         }
 
         // 点击
@@ -164,11 +169,39 @@ export class MenuPanel extends Component {
         return item;
     }
 
+    public refreshAudioStates(): void {
+        const audioManager = AudioManager.getInstance();
+        if (!audioManager) {
+            return;
+        }
+
+        this._itemHandlers.forEach((_handler, item) => {
+            const sprite = item.getComponent(Sprite);
+            if (sprite) {
+                this.updateAudioState(item.name, sprite);
+            }
+        });
+    }
+
+    private updateAudioState(id: string, sprite: Sprite): void {
+        const audioManager = AudioManager.getInstance();
+        if (id === 'music') {
+            sprite.grayscale = !audioManager.isBGMEnabled();
+        } else if (id === 'sound') {
+            sprite.grayscale = !audioManager.isSFXEnabled();
+        }
+    }
+
     private _playClickAnim(item: Node) {
         tween(item)
             .to(0.08, { scale: new Vec3(0.9, 0.9, 1) })
             .to(0.12, { scale: new Vec3(1, 1, 1) }, { easing: 'backOut' })
             .start();
+    }
+
+    private onArrowClick(event: EventTouch) {
+        event.propagationStopped = true;
+        director.loadScene('Home');
     }
 
     private _clear() {
@@ -189,6 +222,7 @@ export class MenuPanel extends Component {
     }
 
     protected onDestroy() {
+        this.arrow.isValid && this.arrow.off(Node.EventType.TOUCH_END, this.onArrowClick, this);
         this._itemHandlers.forEach((handler, item) => {
             item.isValid && item.off(Node.EventType.TOUCH_END, handler, this);
         });
